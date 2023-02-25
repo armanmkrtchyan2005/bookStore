@@ -1,0 +1,35 @@
+.wrong-back {
+  width: 100vw;
+  height: 100vh;
+  background: #f7f8fadb;
+  position: absolute;
+  z-index: 1;
+}
+
+.wrong {
+  width: 30%;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f7f8fa;
+  border-radius: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrong p {
+  text-align: center;
+  font-size: 18px;
+}
+
+.wrong * {
+  margin-top: 40px;
+}
+
+.wrong button {
+  width: 30%;
+}

@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.calendarMain{
+    width: 70rem;
+    height: 500px;
+    display: flex;
+    
+}
+.calendar-container{
+    width: 37rem;
+    height: 670px;
+    padding: 1.5rem;
+    position: relative;
+    border: 1px solid black;
+}
+.calendarButton{
+    width: 20rem;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+.calendarButton h2{
+    color: #FF6E1D;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.calendarTitle{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 3.3rem;
+}
+.showYear{
+    width: 100%;
+    gap: 2rem;
+    padding-top: 1.2rem;
+    display: flex;
+}
+
+.year {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.6rem;
+    color: #D9D9DC;
+}
+
+.courantYear {
+     font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 2.8rem;
+    color: #FF6E1D; 
+}
+.closeIcon{
+    width: 1.6rem;
+    height: 1.6rem;
+    position: absolute;
+    cursor: pointer;
+    right: 0.8rem;
+    top: 1.5rem;
+    border: none;
+    background-color: #fff;
+}
+
+.doneBtn{
+    width: 32rem;
+    height: 6.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: #FF6E1D;
+    border-radius: 10px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2rem;
+    color: #fff;
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.calendarBox{
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
+
+
+button.react-calendar__tile--active {
+    background: #FF6E1D;
+}
+
+button.react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled:focus {
+    background:#FF6E1D  ;
+}
+.react-calendar__tile--now {
+    background: #FF6E1D;
+}
+.react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus {
+    background-color: #FF6E1D;
+}
+
+
+

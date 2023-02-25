@@ -1,0 +1,13 @@
+.ads {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ads > * {
+  margin: 20px;
+}
+
+.forBtn {
+  width: 200px;
+  margin: 20px 0px 0 20px;
+}

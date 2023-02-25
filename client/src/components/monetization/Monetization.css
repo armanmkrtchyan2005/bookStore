@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f8fa;
+}
+.main_advertisement {
+  width: 125rem;
+  height: 164px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.div_advertisement {
+  width: 61.5rem;
+  height: 164px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.div_advertisement p {
+  font-size: 1.6rem;
+}
+.div_advertisement h3 {
+  font-size: 24px;
+}
+.div_min {
+  width: 61rem;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.div_min h4 {
+  color: #b4b4b4;
+  font-size: 1.2rem;
+}
+.div_min span {
+  font-size: 1.4rem;
+}
+.div_min label {
+  font-size: 2.4rem;
+}
+.div_min_top {
+  width: 61rem;
+  height: 40px;
+}
+.div_min_bottom {
+  width: 61rem;
+  height: 40px;
+}
+.detailss {
+  width: 67rem;
+  display: flex;
+  justify-content: center;
+}
+
+.details {
+  width: 23rem;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.details input {
+  border: none;
+  width: 20rem;
+  height: 26px;
+  background: #f7f8fa;
+  border-radius: 10px;
+}
+
+.save_button {
+  background: #e6e7e9;
+  border-radius: 10px;
+  width: 20rem;
+  height: 26px;
+  border: none;
+}
+
+button.react-calendar__tile--active {
+  background: #ff6e1d;
+}
+
+button.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #ff6e1d;
+}
+.react-calendar__tile--now {
+  background: #ff6e1d;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #ff6e1d;
+}

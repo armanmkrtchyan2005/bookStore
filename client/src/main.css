@@ -1,0 +1,35 @@
+html {
+  font-size: 0.521vw;
+}
+.font-link {
+  font-family: "Hanalei Fill", cursive;
+}
+
+:root {
+  --orange: #ff6e1d;
+  --grey: #e6e7e9;
+}
+
+textarea {
+  resize: none;
+}
+
+.grey {
+  color: #b4b4b4;
+}
+
+.orange {
+  color: #ff6e1d;
+}
+.div_nav {
+  width: 45rem;
+}
+
+.div_main {
+  /* width: 190rem; */
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+}

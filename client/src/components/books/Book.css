@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.book_main {
+  width: 125rem;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.div_min_book {
+  width: 400px;
+  height: 323px;
+  background-color: #ffffff;
+}
+.div_bottom {
+  width: 40rem;
+  height: 200px;
+  display: flex;
+}
+.div_imag {
+  width: 13rem;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div_imag img {
+  width: 100%;
+  height: 200px;
+}
+.div_main_genre {
+  width: 23rem;
+  height: 200px;
+}
+.title {
+  width: 25rem;
+  height: 70px;
+}
+.bookTitle h1 {
+  padding: 0.3rem;
+  font-size: 21px;
+}
+.bookTitle h3 {
+  color: #b4b4b4;
+  padding: 0.3rem;
+}
+.div-genre {
+  width: 25rem;
+  height: 120px;
+}
+.min_div_button {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 11rem;
+  align-items: flex-end;
+}
+.button-published {
+  width: 14rem;
+  height: 45px;
+  border-radius: 10px;
+  border: solid 1px #6dbc2d;
+  color: #6dbc2d;
+  font-size: 16px;
+  cursor: pointer;
+}
+.button-edit {
+  width: 14rem;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ebecee;
+  color: #adadad;
+  font-size: 16px;
+  cursor: pointer;
+}

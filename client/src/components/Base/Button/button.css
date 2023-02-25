@@ -1,0 +1,12 @@
+.button {
+  width: 100%;
+  height: 50px;
+  background: var(--orange);
+  border-radius: 10px;
+  border: none;
+  color: white;
+}
+
+.button:disabled {
+  background: var(--grey);
+}

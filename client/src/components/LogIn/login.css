@@ -1,0 +1,31 @@
+.login {
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rout {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: #ff6e1d;
+}
+
+.custom-label {
+  font-size: 12px;
+}
+
+.login * {
+  margin-top: 20px;
+}
+
+.recap {
+  width: 100px;
+}
