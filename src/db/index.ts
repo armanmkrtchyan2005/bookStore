@@ -34,5 +34,5 @@ export const db = new Sequelize({
     UserReadNow,
     Complain,
   ],
-  logging: false,
+  logging: true,
 });

@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./login.css";
 import { useEffect } from "react";
-import { baseUrl } from "../../config";
+import { baseUrl, siteKey } from "../../config";
 import Wrong from "./Wrong/Wrong";
 import axios from "axios";
 import { TokenContext } from "../../App";
@@ -43,7 +43,7 @@ export const LogIn = () => {
         password,
       });
       setToken(data.token);
-      localStorage.setItem("token", data.token)
+      localStorage.setItem("token", data.token);
 
       navigate("/home");
     } catch (e) {
@@ -91,10 +91,7 @@ export const LogIn = () => {
             Согласен на обработку персональных данных
           </label>
         </div>
-        <ReCAPTCHA
-          sitekey="6LdN3fgjAAAAALMSw2CxtoItAnKClNpKPXL_LOZh"
-          onChange={onChange}
-        />
+        <ReCAPTCHA sitekey={siteKey} onChange={onChange} />
         <Button value={"Войти"} disabled={isDisabled} onClick={handleLogin} />
         <div className="rout">
           <Link to={"/sign-up"}>Регистрация</Link>
