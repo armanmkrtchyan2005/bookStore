@@ -1,0 +1,169 @@
+.createBook_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 77rem;
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: #ffffff;
+  margin: 0% auto;
+}
+.createBook_main h1 {
+  font-size: 3rem;
+}
+.createBook-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 75rem;
+}
+.createBook_form {
+  margin-top: 2rem;
+  width: 75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.divInp_file {
+  width: 27rem;
+  height: 300px;
+  background: #e6e7e9;
+}
+.divInp_file > img {
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+.divInp_form {
+  width: 43rem;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.divForm_inp {
+  width: 40rem;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background: #f7f8fa;
+}
+.inp_all {
+  height: 90px;
+}
+.div_limitation {
+  width: 40rem;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.div_limitation input {
+  width: 24px;
+  height: 24px;
+}
+.div_limitation span {
+  font-size: 1.4rem;
+}
+.div_genres {
+  width: 72rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.div_genres button {
+  width: 400px;
+  height: 45px;
+  border: none;
+  font-size: 1.6rem;
+  border-radius: 30px;
+  border: solid 1px #ff6e1d;
+  background: #ffffff;
+  color: #ff6e1d;
+}
+.div_formatBook {
+  width: 72rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div_formatBook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div_formatBook input {
+  border: none;
+  background: #ffceb2;
+  width: 40rem;
+  height: 30px;
+}
+.inp {
+  display: none;
+  cursor: pointer;
+}
+.addChap {
+  height: 20px;
+}
+
+.addChapter {
+  width: 72rem;
+  height: 75px;
+  border: none;
+  border: solid 1px #ff6e1d;
+  color: #ff6e1d;
+  background: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.div_save {
+  width: 72rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.bookRules {
+  width: 30rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  border: solid 1px #b4b4b4;
+  appearance: none;
+  border-radius: 50%;
+  padding: 2px;
+  /* box-sizing: border-box; */
+  background-clip: content-box;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #ff6e1d;
+}
+.bookRules p {
+  font-size: 1.4rem;
+}
+.bookRules span {
+  color: #ff6e1d;
+}
+.div_save button {
+  width: 30rem;
+  height: 65px;
+  border: none;
+  background: #e6e7e9;
+  color: #ffffff;
+  font-size: 1.3rem;
+}

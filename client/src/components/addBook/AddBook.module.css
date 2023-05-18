@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.div-add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 47rem;
+    width: 124rem;
+    height: 125px;
+    background-color: #FFFFFF;
+}
+
+.but-left {
+    width: 18.4rem;
+    height: 65px;
+    background-color: #FF6E1D;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+}
+
+.but-right{
+    width: 49.8rem;
+    height: 65px;
+    background-color: #FFCEB2;
+    cursor: pointer;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.but-right span{
+    color: #FF6E1D;
+    padding: 1rem;
+}

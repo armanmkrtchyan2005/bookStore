@@ -1,0 +1,28 @@
+input {
+  width: 97%;
+  height: 50px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
+input:focus-visible {
+  outline: 1px solid var(--orange);
+}
+
+input[type="radio"] {
+  appearance: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  background-clip: content-box;
+  border: 2px solid #bbbbbb;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--orange);
+}

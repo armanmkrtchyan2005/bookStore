@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.book_main {
+  width: 125rem;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.div_min_book {
+  width: 400px;
+  height: 323px;
+  background-color: #ffffff;
+}
+
+.div_bottom {
+  display: flex;
+}
+
+.div_imag {
+  width: 98px;
+  height: 156px;
+}
+
+.div_imag img {
+  width: 100%;
+  height: 200px;
+}
+
+.div_main_genre {
+  width: 23rem;
+  height: 200px;
+}
+
+.title {
+  width: 25rem;
+  height: 70px;
+}
+
+.bookTitle h1 {
+  padding: 0.3rem;
+  font-size: 21px;
+}
+
+.bookTitle h3 {
+  color: #b4b4b4;
+  padding: 0.3rem;
+}
+
+.div-genres {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 3px;
+  column-gap: 5px;
+  font-size: 14px;
+}
+
+.div-restriction {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #E6E7E9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.div-genre {
+  height: 26px;
+  border: solid 1px #e6e7e9;
+  border-radius: 30px;
+  background: #ffffff;
+  color: #b4b4b4;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.min_div_button {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 11rem;
+  align-items: flex-end;
+}
+
+.button-published {
+  width: 14rem;
+  height: 45px;
+  border-radius: 10px;
+  border: solid 1px #6dbc2d;
+  color: #6dbc2d;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-edit {
+  width: 14rem;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ebecee;
+  color: #adadad;
+  font-size: 16px;
+  cursor: pointer;
+}

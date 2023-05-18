@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main_advertisement {
+    width: 125rem;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    ;
+}
+
+.div_advertisement {
+    width: 61.5rem;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.div_advertisement p {
+    font-size: 16px;
+}
+
+.div_advertisement h3 {
+    font-size: 24px;
+}
+
+.div_min {
+    width: 61rem;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.div_min h4 {
+    color: #B4B4B4;
+    font-size: 1.2rem;
+}
+
+.div_min span {
+    font-size: 1.4rem;
+}
+
+.div_min label {
+    font-size: 2.4rem;
+}
+
+.div_min_top {
+    width: 61rem;
+    height: 40px;
+}
+
+.div_min_bottom {
+    width: 61rem;
+    height: 40px;
+}

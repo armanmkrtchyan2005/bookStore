@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f8fa;
+}
+
+.div_all_right {
+  width: 130rem;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
