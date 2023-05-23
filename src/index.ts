@@ -32,14 +32,17 @@ app.use((_, res) => {
 });
 
 const port = process.env.PORT || 8080;
-
+const dev = process.env.NODE_ENV === "production" ? false : true;
 const start = async () => {
+  if (dev) {
+    fs.rmSync("uploads", { force: true, recursive: true });
+  }
   if (!fs.existsSync("uploads")) {
     fs.mkdirSync("uploads");
   }
   try {
     await db.authenticate({ logging: false });
-    await db.sync({ force: false, logging: false });
+    await db.sync({ force: dev, logging: false });
     genres.forEach(async (value) => {
       try {
         const genre = new Genre({ value });

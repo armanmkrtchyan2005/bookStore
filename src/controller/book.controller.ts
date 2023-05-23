@@ -15,7 +15,9 @@ import { LastData } from "../db/model/lastData.model";
 import { parse } from "node-html-parser";
 
 import EPub from "epub";
-import { DataType } from "sequelize-typescript";
+
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
+const MAX_CHAPTER_SIZE = 2 * 1024 * 1024;
 
 interface IMulterFiles {
   [fieldname: string]: Express.Multer.File[];
@@ -27,9 +29,18 @@ class BookController {
       interface IError {
         name?: string;
         authorName?: string;
+        imageSize?: string;
+        chapterSize?: string;
       }
 
-      const { name, authorName, description, restriction, genres } = req.body;
+      const {
+        name,
+        authorName,
+        description,
+        restriction,
+        genres,
+        chapterNames,
+      } = req.body;
 
       if (req.userData.role === "USER") {
         return res.status(400).json({
@@ -38,7 +49,21 @@ class BookController {
       }
       const files = req.files as IMulterFiles;
       const img = files.img[0];
+
+      const chapters = files.chapter;
+
       const error: IError = {};
+
+      if (img.size > MAX_IMAGE_SIZE) {
+        error.imageSize = "Файл не должен бить не боле 2мб";
+      }
+
+      for (let i = 0; i < chapters.length; i++) {
+        if (chapters[i].size > MAX_CHAPTER_SIZE) {
+          error.chapterSize = "Файл не должен бить не боле 2мб";
+          break;
+        }
+      }
 
       if (!name.trim()) {
         error.name = "Напишите название книги";
@@ -64,7 +89,7 @@ class BookController {
       });
 
       if (!author) {
-        return res.status(401).json({
+        return res.status(403).json({
           message: "Пользователь не авторизован",
         });
       }
@@ -95,18 +120,20 @@ class BookController {
 
       if (!fs.existsSync(bookDir)) {
         fs.mkdirSync(bookDir);
+        fs.mkdirSync(path.join(bookDir, "books"));
       }
       const folder = `${name.split(" ").join("")}`;
 
-      fs.mkdirSync(path.join(bookDir, folder));
-      fs.mkdirSync(path.join(bookDir, folder, "avatar"));
-      fs.mkdirSync(path.join(bookDir, folder, "chapter"));
+      fs.mkdirSync(path.join(bookDir, "books", folder));
+      fs.mkdirSync(path.join(bookDir, "books", folder, "avatar"));
+      fs.mkdirSync(path.join(bookDir, "books", folder, "chapter"));
 
       const imgData = fs.readFileSync(img.path);
 
       fs.writeFileSync(
         path.join(
           bookDir,
+          "books",
           folder,
           "avatar",
           `avatar.${img.originalname.split(".")[1]}`
@@ -118,7 +145,7 @@ class BookController {
 
       const fileBaseLink = `/uploads/${author.name.split(" ").join("")}_${
         author.id
-      }/${folder}`;
+      }/books/${folder}`;
 
       const book = new Book({
         name,
@@ -126,10 +153,85 @@ class BookController {
         description,
         restriction,
         authorId: author.id,
-        img: `${fileBaseLink}/avatar/avatar.${img.originalname.split(".")[1]}`,
+        img: `${fileBaseLink}/books/avatar/avatar.${
+          img.originalname.split(".")[1]
+        }`,
       });
 
       await book.save();
+
+      chapters.forEach(async (chapterFile, index) => {
+        const folder = `${name.split(" ").join("")}`;
+
+        const fileBaseLink = `/uploads/${author.name.split(" ").join("")}_${
+          author.id
+        }/books/${folder}`;
+        const fileData = fs.readFileSync(chapterFile.path, "utf8");
+        const date = Date.now();
+        if (chapterFile.originalname.split(".")[1] === "fb2") {
+          const root = parse(fileData, { parseNoneClosedTags: false });
+
+          const text = root.querySelector("body")?.innerText as string;
+
+          fs.writeFileSync(
+            path.join(
+              bookDir,
+              "books",
+              folder,
+              "chapter",
+              `chapter${date}.txt`
+            ),
+            text,
+            "utf8"
+          );
+        } else if (chapterFile.originalname.split(".")[1] === "txt") {
+          fs.writeFileSync(
+            path.join(
+              bookDir,
+              "books",
+              folder,
+              "chapter",
+              `chapter${date}.txt`
+            ),
+            fileData,
+            "utf8"
+          );
+        } else if (chapterFile.originalname.split(".")[1] === "epub") {
+          const epub = new EPub(chapterFile.path);
+
+          epub.on("end", function () {
+            epub.flow.forEach(function (chapter: any) {
+              epub.getChapter(chapter.id, function (err, text) {
+                const root = parse(fileData);
+
+                const txt = root.innerText as string;
+
+                fs.writeFileSync(
+                  path.join(
+                    bookDir,
+                    "books",
+                    folder,
+                    "chapter",
+                    `chapter${date}.txt`
+                  ),
+                  txt,
+                  "utf8"
+                );
+              });
+            });
+          });
+          epub.parse();
+        }
+        fs.rmSync(chapterFile.path);
+
+        const chapter = new Chapter({
+          name: JSON.parse(chapterNames)[index],
+          dataUrl: `${fileBaseLink}/chapter/chapter${date}.txt`,
+          bookId: book.id,
+        });
+
+        await chapter.save();
+      });
 
       JSON.parse(genres).forEach(async (genreId: string) => {
         try {
@@ -144,120 +246,16 @@ class BookController {
         }
       });
 
-      return res.json({ message: "Книга добавлена" });
+      fs.rmSync(img.path);
+
+      return res.json({
+        message: "Книга создана",
+      });
     } catch (e) {
       console.log(e);
       return res
         .status(400)
         .json({ message: "Такая книга у вас уже существует" });
-    }
-  }
-
-  async addChapter(req: Request, res: Response) {
-    try {
-      const { bookId, name } = req.body;
-      const file = req.file;
-
-      if (req.userData.role === "USER") {
-        return res.status(403).json({
-          message: "У вас нет прав добавить главу",
-        });
-      }
-
-      if (!file) {
-        return res.status(400).json({
-          message: "Вы не отправили файл",
-        });
-      }
-
-      const book = await Book.findOne({
-        include: [Author],
-        where: {
-          id: bookId,
-          authorId:
-            req.userData.role === "AUTHOR"
-              ? req.userData.id
-              : req.body.authorId,
-        },
-      });
-      if (!book) {
-        return res.status(400).json({
-          message: "Книга не найдена",
-        });
-      }
-
-      const bookDir = path.join(
-        __dirname,
-        "..",
-        "..",
-        "uploads",
-        `${book.author.name.split(" ").join("")}_${book.author.id}`
-      );
-
-      if (!fs.existsSync(bookDir)) {
-        fs.mkdirSync(bookDir);
-      }
-      const folder = `${book.name.split(" ").join("")}`;
-
-      const fileBaseLink = `/uploads/${book.author.name.split(" ").join("")}_${
-        book.author.id
-      }/${folder}`;
-      const fileData = fs.readFileSync(file.path, "utf8");
-      const date = Date.now();
-      if (file.originalname.split(".")[1] === "fb2") {
-        const root = parse(fileData, { parseNoneClosedTags: false });
-
-        const text = root.querySelector("body")?.innerText as string;
-
-        fs.writeFileSync(
-          path.join(bookDir, folder, "chapter", `chapter${date}.txt`),
-          text,
-          "utf8"
-        );
-      } else if (file.originalname.split(".")[1] === "txt") {
-        fs.writeFileSync(
-          path.join(bookDir, folder, "chapter", `chapter${date}.txt`),
-          fileData,
-          "utf8"
-        );
-      } else if (file.originalname.split(".")[1] === "epub") {
-        const epub = new EPub(file.path);
-
-        epub.on("end", function () {
-          epub.flow.forEach(function (chapter: any) {
-            epub.getChapter(chapter.id, function (err, text) {
-              const root = parse(fileData);
-
-              const txt = root.innerText as string;
-              console.log(txt);
-
-              fs.writeFileSync(
-                path.join(bookDir, folder, "chapter", `chapter${date}.txt`),
-                txt,
-                "utf8"
-              );
-            });
-          });
-        });
-        epub.parse();
-      }
-      fs.rmSync(file.path);
-
-      const chapter = new Chapter({
-        name,
-        dataUrl: `${fileBaseLink}/chapter/chapter${date}.txt`,
-        bookId: book.id,
-      });
-
-      await chapter.save();
-
-      return res.json(book);
-    } catch (error) {
-      console.log(error);
-
-      return res.status(400).json({
-        message: "Ошибка создания главы",
-      });
     }
   }
 

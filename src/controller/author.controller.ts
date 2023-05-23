@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { literal, Op } from "sequelize";
+import { Op } from "sequelize";
 import { Request, Response } from "express";
 import { Author } from "../db/model/author.model";
 import { Book } from "../db/model/book.model";
@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { IReqUser } from "../middleware/auth.middleware";
 import { Genre } from "../db/model/genre.model";
+import { Company } from "../db/model/company.model";
 
 const jwtOption = {};
 
@@ -365,6 +366,97 @@ class AuthorController {
     return res.json({
       referralLink: `${process.env.HOST}/sign-up?authorId=${req.userData.id}`,
     });
+  }
+
+  async createCompany(req: Request, res: Response) {
+    try {
+      const { name, startDate, url, maxShowCount, authorId } = req.body;
+      if (req.userData.role === "USER") {
+        return res.status(403).json({
+          message: "У вас нет прав создать компанию",
+        });
+      }
+      const content = req.file as Express.Multer.File;
+      const author = await Author.findOne({
+        where: {
+          id: req.userData.role === "AUTHOR" ? req.userData.id : authorId,
+        },
+      });
+      if (!author) {
+        return res.status(403).json({
+          message: "Автор не найден",
+        });
+      }
+
+      const contentData = fs.readFileSync(content.path);
+
+      const dir = path.join(
+        __dirname,
+        "..",
+        "..",
+        "uploads",
+        `${author.name.split(" ").join("")}_${author.id}`
+      );
+
+      const companiesDir = path.join(dir, "companies");
+
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+        if (!fs.existsSync(companiesDir)) {
+          fs.mkdirSync(companiesDir);
+        }
+      }
+
+      if (!fs.existsSync(companiesDir)) {
+        fs.mkdirSync(companiesDir);
+      }
+      const date = Date.now();
+      const companyFile = path.join(
+        companiesDir,
+        `${name}_${date}.${content.originalname.split(".")[1]}`
+      );
+      fs.writeFileSync(companyFile, contentData);
+      const company = new Company({
+        authorId: author.id,
+        content: `/uploads/${author.name.split(" ").join("")}_${
+          author.id
+        }/companies/${name}_${date}.${content.originalname.split(".")[1]}`,
+        maxShowCount,
+        startDate: new Date(startDate),
+        name,
+        url,
+      });
+      company.save();
+    } catch (e) {
+      return res.status(400).json({
+        message: "Ошибка создания компании",
+      });
+    }
+  }
+
+  async getCompanies(req: Request, res: Response) {
+    try {
+      if (req.userData.role === "USER") {
+        return res.status(403).json({
+          message: "Вы не имеете права получить компании",
+        });
+      }
+      const author = await Author.findOne({
+        include: [Company],
+        where: {
+          id:
+            req.userData.role === "AUTHOR"
+              ? req.userData.id
+              : (req.query.authorId as string),
+        },
+      });
+
+      return res.json(author?.companies);
+    } catch (e) {
+      return res.status(400).json({
+        message: "Ошибка получения компании",
+      });
+    }
   }
 }
 

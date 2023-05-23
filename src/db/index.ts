@@ -13,6 +13,7 @@ import { UserReadNow } from "./model/userReadNow.model";
 import { Complain } from "./model/complain.model";
 import { Admin } from "./model/admin.model";
 import { LastData } from "./model/lastData.model";
+import { Company } from "./model/company.model";
 
 config();
 
@@ -37,6 +38,7 @@ export const db = new Sequelize({
     Complain,
     Admin,
     LastData,
+    Company,
   ],
   logging: true,
 });

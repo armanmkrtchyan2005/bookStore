@@ -15,6 +15,7 @@ import {
 import { Book } from "./book.model";
 import { User } from "./user.model";
 import { UserAuthor } from "./userAuthor.model";
+import { Company } from "./company.model";
 
 interface IAuthor {
   id?: string;
@@ -75,6 +76,9 @@ export class Author extends Model<IAuthor> {
 
   @HasMany(() => Book)
   books!: Book[];
+
+  @HasMany(() => Company)
+  companies!: Book[];
 
   @BelongsToMany(() => User, () => UserAuthor)
   followers!: User[];

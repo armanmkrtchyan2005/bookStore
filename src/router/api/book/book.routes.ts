@@ -6,19 +6,15 @@ import { authMiddleware } from "../../../middleware/auth.middleware";
 
 export const bookRouter = Router();
 
-const upload = multer({ dest: os.tmpdir() });
+const upload = multer({
+  dest: os.tmpdir(),
+});
 
 bookRouter.post(
   "/",
   authMiddleware,
-  upload.fields([{ name: "img", maxCount: 1 }, { name: "chapters" }]),
+  upload.fields([{ name: "img", maxCount: 1 }, { name: "chapter" }]),
   bookController.createBook
-);
-bookRouter.post(
-  "/chapter",
-  authMiddleware,
-  upload.single("chapter"),
-  bookController.addChapter
 );
 bookRouter.get("/", bookController.getBooks);
 bookRouter.put("/percent", bookController.setChapterPercent);
