@@ -1,39 +1,43 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .div-add-book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 47rem;
-    width: 124rem;
-    height: 125px;
-    background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 124rem;
+  height: 125px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .but-left {
-    width: 18.4rem;
-    height: 65px;
-    background-color: #FF6E1D;
-    cursor: pointer;
-    font-size: 1.6rem;
-    color: #FFFFFF;
-    border-radius: 10px;
-    border: none;
+  width: 18.4rem;
+  height: 65px;
+  background-color: #ff6e1d;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
 }
 
-.but-right{
-    width: 49.8rem;
-    height: 65px;
-    background-color: #FFCEB2;
-    cursor: pointer;
-    font-size: 1.6rem;
-    border-radius: 10px;
-    border: none;
+.but-right {
+  width: 49.8rem;
+  height: 65px;
+  background-color: #ffceb2;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 10px;
+  border: none;
 }
 
-.but-right span{
-    color: #FF6E1D;
-    padding: 1rem;
+.but-right span {
+  color: #ff6e1d;
+  padding: 1rem;
 }

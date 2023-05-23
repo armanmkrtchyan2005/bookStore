@@ -153,9 +153,7 @@ class BookController {
         description,
         restriction,
         authorId: author.id,
-        img: `${fileBaseLink}/books/avatar/avatar.${
-          img.originalname.split(".")[1]
-        }`,
+        img: `${fileBaseLink}/avatar/avatar.${img.originalname.split(".")[1]}`,
       });
 
       await book.save();

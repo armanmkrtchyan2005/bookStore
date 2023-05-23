@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 77rem;
   position: absolute;
   top: 10rem;
@@ -10,6 +10,8 @@
   transform: translate(-50%, 0);
   background: #ffffff;
   margin: 0% auto;
+  padding: 30px;
+  box-sizing: border-box;
 }
 .createBook_main h1 {
   font-size: 3rem;
@@ -31,8 +33,9 @@
 }
 .divInp_file {
   width: 27rem;
-  height: 300px;
+  height: 316px;
   background: #e6e7e9;
+  border-radius: 10px;
 }
 .divInp_file > img {
   width: 100%;
@@ -50,13 +53,17 @@
 }
 .divForm_inp {
   width: 40rem;
-  height: 30px;
+  height: 65px;
   border-radius: 10px;
   border: none;
   background: #f7f8fa;
+  font-size: 16px;
 }
 .inp_all {
   height: 90px;
+  padding: 22px 12px;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 .div_limitation {
   width: 40rem;
@@ -82,7 +89,7 @@
   width: 400px;
   height: 45px;
   border: none;
-  font-size: 1.6rem;
+  font-size: 16px;
   border-radius: 30px;
   border: solid 1px #ff6e1d;
   background: #ffffff;
@@ -90,10 +97,12 @@
 }
 .div_formatBook {
   width: 72rem;
-  height: auto;
+  height: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  background-color: #f7f8fa;
 }
 .div_formatBook {
   display: flex;
@@ -105,7 +114,7 @@
   border: none;
   background: #ffceb2;
   width: 40rem;
-  height: 30px;
+  height: 65px;
 }
 .inp {
   display: none;
@@ -124,10 +133,11 @@
   background: #ffffff;
   border-radius: 10px;
   font-size: 16px;
+  margin-top: 10px;
 }
 .div_save {
   width: 72rem;
-  height: 80px;
+  height: 95px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -160,10 +170,10 @@ input[type="checkbox"]:checked {
   color: #ff6e1d;
 }
 .div_save button {
-  width: 30rem;
+  width: 40rem;
   height: 65px;
   border: none;
   background: #e6e7e9;
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 16px;
 }

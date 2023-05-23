@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.personalDetails{
+    width: 123rem;
+    height: 594px;
+    border: solid 2px;
+    display: flex;
+}
+.div_input{
+    width: 61rem;
+    height: 594px;
+    border: solid 2px;
+}

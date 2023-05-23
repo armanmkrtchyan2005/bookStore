@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 const NavigateComp = lazy(() => import("components/navigation/Navigation"));
 const HomePage = lazy(() => import("pages/Home/Home"));
+// const MyDetails =lazy(() => import("pages/MyDetails/MyDetails"))
 const ReferralLink = lazy(() => import("components/referralLink/ReferralLink"));
 const Monetization = lazy(() => import("components/monetization/Monetization"));
 
@@ -16,6 +17,7 @@ export const DashboardRouter = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/monetization" element={<Monetization />} />
         <Route path="/referral" element={<ReferralLink />} />
+        {/* <Route path="/myDetails" element={<MyDetails />} /> */}
         <Route path="*" element={<Navigate to="home" />} />
       </Routes>
     </>

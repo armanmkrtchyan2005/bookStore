@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.sum_main{
+    width: 123rem;
+    height: 291px;
+    border: solid 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 30px;
+    box-sizing: border-box;
+}
+p{
+    font-size: 18px;
+}
+h2{
+    font-size: 50px;
+}
+.sum_button{
+    width: 131px;
+    height: 65px;
+    background-color: #FF6E1D;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+}

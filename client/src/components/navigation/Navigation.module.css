@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: flex-end;
   background-color: #ffffff;
+  position: fixed;
 }
 .navigate_logo {
   width: 26rem;
@@ -30,11 +31,13 @@
   gap: 2rem;
 }
 .nav_li a {
-  font-size: 1.6rem;
+  font-size: 16px;
   cursor: pointer;
   text-decoration: none;
+  color: #000000;
 }
 
-.font-link {
+.nav_li a.font-link {
   color: #ff6e1d;
+  font-family: 'Visuelt Pro';
 }

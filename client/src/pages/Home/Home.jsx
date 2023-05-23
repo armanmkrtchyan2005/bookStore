@@ -13,7 +13,6 @@ const Home = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [fileNames, setFileNames] = useState(["txt, fb2 / до 2 мб "]);
   const [files, setFiles] = useState([]);
-  const formData = new FormData();
 
   useEffect(() => {
     document.body.addEventListener("click", () => {
@@ -47,7 +46,6 @@ const Home = () => {
           fileNames={fileNames}
           setFileNames={setFileNames}
           change={change}
-          formData={formData}
         />
       ) : null}
       {genreShow ? (

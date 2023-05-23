@@ -3,9 +3,13 @@
   justify-content: center;
   align-items: center;
   font-size: 16px;
+  gap: 45px;
 }
 
 .inp {
   display: none;
   cursor: pointer;
+}
+.txt{
+  color: #FF6E1D;
 }

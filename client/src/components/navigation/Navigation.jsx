@@ -19,7 +19,7 @@ const Navigate = () => {
               <img src={myBook} alt="" />
               <NavLink
                 to={"home"}
-                className={({ isActive }) => (isActive ? "font-link" : null)}
+                className={({ isActive }) => (isActive ? styles["font-link"] : null)}
               >
                 {" "}
                 Мои книги{" "}
@@ -29,7 +29,7 @@ const Navigate = () => {
               <img src={MyDetails} alt="" />
               <NavLink
                 to={"myDetails"}
-                className={({ isActive }) => (isActive ? "font-link" : null)}
+                className={({ isActive }) => (isActive ? styles["font-link"] : null)}
               >
                 {" "}
                 Мои данные{" "}
@@ -39,7 +39,7 @@ const Navigate = () => {
               <img src={Monetization} alt="" />
               <NavLink
                 to={"monetization"}
-                className={({ isActive }) => (isActive ? "font-link" : null)}
+                className={({ isActive }) => (isActive ? styles["font-link"] : null)}
               >
                 {" "}
                 Монетизация{" "}
@@ -49,7 +49,7 @@ const Navigate = () => {
               <img src={Referral} alt="" />
               <NavLink
                 to={"referral"}
-                className={({ isActive }) => (isActive ? "font-link" : null)}
+                className={({ isActive }) => (isActive ? styles["font-link"] : null)}
               >
                 {" "}
                 Реферальная система{" "}

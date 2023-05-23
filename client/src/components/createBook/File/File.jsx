@@ -10,7 +10,6 @@ export const File = ({
   val,
   setFileNames,
   setState,
-  formData,
 }) => {
   const fileRef = useRef(null);
   const [file, setFile] = useState();
@@ -25,6 +24,7 @@ export const File = ({
       setFile(null);
       return;
     }
+
     setFile(fileObj);
   };
 
@@ -47,13 +47,11 @@ export const File = ({
         })
       );
 
-      formData.append("chapter", file);
-
       setState((prev) => {
         return { ...prev, chapterNames: fileNames, chapters: files };
       });
     }
-  }, [file, index, setFileNames, setFiles, fileNames, setState]);
+  }, [file, index, setFileNames, setFiles, files, fileNames, setState]);
 
   return (
     <tr className={styles.tr} key={uuid()}>
@@ -61,7 +59,7 @@ export const File = ({
       <td>
         <input type="text" placeholder={`Глава ${index + 1}`} />
       </td>
-      <td onClick={handleClick}>
+      <td className={styles.txt} onClick={handleClick}>
         {val}
         <input
           type="file"

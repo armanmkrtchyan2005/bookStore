@@ -41,7 +41,7 @@ export class Company extends Model<ICompany> {
   @Column
   startDate!: Date;
 
-  @AllowNull(false)
+  @Default(0)
   @Column
   clicks!: number;
 

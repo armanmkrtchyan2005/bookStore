@@ -1,60 +1,76 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .main_advertisement {
-    width: 125rem;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    background-color: #FFFFFF;
-    ;
+  width: 125rem;
+  height: 220px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 
 .div_advertisement {
-    width: 61.5rem;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 61.5rem;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  gap: 5px;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .div_advertisement p {
-    font-size: 16px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .div_advertisement h3 {
-    font-size: 24px;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .div_min {
-    width: 61rem;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  width: 61rem;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .div_min h4 {
-    color: #B4B4B4;
-    font-size: 1.2rem;
+  color: #b4b4b4;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .div_min span {
-    font-size: 1.4rem;
+  font-size: 14px;
+  font-weight: 400;
+  width: 153px;
 }
 
 .div_min label {
-    font-size: 2.4rem;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .div_min_top {
-    width: 61rem;
-    height: 40px;
+  width: 61rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .div_min_bottom {
-    width: 61rem;
-    height: 40px;
+  width: 61rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }

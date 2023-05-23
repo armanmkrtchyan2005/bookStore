@@ -22,7 +22,7 @@ const Advertisement = () => {
             <label>8 898</label>
           </div>
           <div className={styles.div_min_bottom}>
-            <span>Доступные для вывода </span>
+            <span>Ожидающие оплаты </span>
             <label>12 545</label>
           </div>
         </div>

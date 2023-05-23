@@ -26,7 +26,6 @@ const CreateBook = ({
   change,
   selectedGenres,
   setSelectedGenres,
-  formData,
 }) => {
   const [img, setImg] = useState(null);
   const { token } = useContext(TokenContext);
@@ -37,20 +36,25 @@ const CreateBook = ({
 
   const submitHandle = async (e) => {
     e.preventDefault();
+    console.log(state);
     try {
-      // const formData = new FormData();
-      // formData.append("img", state.img);
-      // formData.append("name", state.name);
-      // formData.append("authorName", state.authorName);
-      // formData.append("description", state.description);
-      // formData.append("restriction", state.restriction);
-      // formData.append("genres", JSON.stringify(state.genres));
-      // const { data } = await axios.post(`${baseUrl}/api/v2/book`, formData, {
-      //   headers: {
-      //     Authorization: `bearer ${token}`,
-      //   },
-      // });
-      // setShow(false);
+      const formData = new FormData();
+
+      formData.append("img", state.img);
+      formData.append("chapters", state.chapters);
+      formData.append("name", state.name);
+      formData.append("authorName", state.authorName);
+      formData.append("description", state.description);
+      formData.append("restriction", state.restriction);
+      formData.append("genres", JSON.stringify(state.genres));
+      formData.append("chapterNames", JSON.stringify(state.chapterNames));
+      const { data } = await axios.post(`${baseUrl}/api/v2/book`, formData, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+      console.log(data);
+      setShow(false);
     } catch (e) {
       console.log(e.message);
     }
@@ -147,6 +151,7 @@ const CreateBook = ({
                   return { ...prev, description: e.target.value };
                 })
               }
+              placeholder="Содержание"
             ></textarea>
             <div className={styles.div_limitation}>
               <input
@@ -204,7 +209,6 @@ const CreateBook = ({
                     setFileNames={setFileNames}
                     val={val}
                     key={uuid()}
-                    formData={formData}
                   />
                 );
               })}
